@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-02-23T23:06:28.890Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="lTLc9-TRRKK7GXSn8vFV" version="20.8.21" type="github">
+<mxfile host="app.diagrams.net" modified="2023-02-24T00:00:24.274Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="do-XqXpj-HS4gxvQROm0" version="20.8.21" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="1120" dy="452" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="1120" dy="429" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -24,13 +24,10 @@
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-5" value="LibroDetalle" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="320" y="340" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="iToEJ3CbW-RjeYXbpDTx-6" value="Id" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="130" y="40" width="100" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="iToEJ3CbW-RjeYXbpDTx-7" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="iToEJ3CbW-RjeYXbpDTx-1" target="iToEJ3CbW-RjeYXbpDTx-6">
+        <mxCell id="iToEJ3CbW-RjeYXbpDTx-7" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="iToEJ3CbW-RjeYXbpDTx-1" target="iToEJ3CbW-RjeYXbpDTx-71">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="370" y="290" as="sourcePoint" />
-            <mxPoint x="470" y="190" as="targetPoint" />
+            <mxPoint x="215.35533905932743" y="74.14213562373095" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-8" value="Titulo" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
@@ -166,7 +163,7 @@
           <mxGeometry x="210" y="270" width="110" height="40" as="geometry" />
         </mxCell>
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-45" value="Editorial" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="470" y="380" width="110" height="40" as="geometry" />
+          <mxGeometry x="470" y="340" width="110" height="40" as="geometry" />
         </mxCell>
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-46" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=0;" edge="1" parent="1" source="iToEJ3CbW-RjeYXbpDTx-45" target="iToEJ3CbW-RjeYXbpDTx-5">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
@@ -237,29 +234,14 @@
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-63" value="LibroDetalle" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="320" y="340" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="iToEJ3CbW-RjeYXbpDTx-64" value="LibroDetalleFormato" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="275.63" y="490" width="192.5" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="iToEJ3CbW-RjeYXbpDTx-65" value="Id" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="131.88" y="40" width="100" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="iToEJ3CbW-RjeYXbpDTx-66" value="LibroDetalleFormato" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="277.5" y="490" width="192.5" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="iToEJ3CbW-RjeYXbpDTx-67" value="Id" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="133.75" y="40" width="100" height="40" as="geometry" />
-        </mxCell>
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-68" value="Autor" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="331.87" y="70" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-69" value="Titulo" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="251.87" y="20" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="iToEJ3CbW-RjeYXbpDTx-70" value="LibroDetalleFormato" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="277.5" y="490" width="192.5" height="90" as="geometry" />
-        </mxCell>
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-71" value="Id" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="133.75" y="40" width="100" height="40" as="geometry" />
+          <mxGeometry x="130" y="40" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-72" value="Autor" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="331.87" y="70" width="100" height="40" as="geometry" />
@@ -274,7 +256,16 @@
           <mxGeometry x="210" y="270" width="110" height="40" as="geometry" />
         </mxCell>
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-76" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Tienda Libro&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontFamily=Architects Daughter;" vertex="1" parent="1">
-          <mxGeometry x="560" y="30" width="220" height="70" as="geometry" />
+          <mxGeometry x="560" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="iToEJ3CbW-RjeYXbpDTx-78" value="Id" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="540" y="420" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="iToEJ3CbW-RjeYXbpDTx-79" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iToEJ3CbW-RjeYXbpDTx-78" target="iToEJ3CbW-RjeYXbpDTx-4">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="683" y="477" as="sourcePoint" />
+            <mxPoint x="630" y="510" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
