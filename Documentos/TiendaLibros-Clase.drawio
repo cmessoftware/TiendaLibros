@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-02-25T03:24:53.570Z" agent="5.0 (Linux; Android 12; SM-A035M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36" etag="8veNF11lSEhkc3jNjSaT" version="20.8.23" type="github">
+<mxfile host="app.diagrams.net" modified="2023-02-28T22:57:53.479Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="b9V9wdeWRFGC0rqIHZhm" version="20.8.23" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="748" dy="181" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="1120" dy="452" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -180,12 +180,6 @@
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-48" value="LibroDetalleFormato" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="273.75" y="490" width="192.5" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="iToEJ3CbW-RjeYXbpDTx-49" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="iToEJ3CbW-RjeYXbpDTx-48" target="iToEJ3CbW-RjeYXbpDTx-5" edge="1">
-          <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="430" y="431" as="sourcePoint" />
-            <mxPoint x="396" y="390" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="iToEJ3CbW-RjeYXbpDTx-50" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=0;" parent="1" source="iToEJ3CbW-RjeYXbpDTx-48" target="iToEJ3CbW-RjeYXbpDTx-2" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="380" y="500" as="sourcePoint" />
@@ -265,6 +259,15 @@
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="683" y="477" as="sourcePoint" />
             <mxPoint x="630" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Z82ll9UgQxqg_cq3DmC--1" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Uno a Uno&lt;br&gt;Uno a muchos&lt;br&gt;Muchos a muchos&lt;br&gt;&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontFamily=Architects Daughter;" vertex="1" parent="1">
+          <mxGeometry x="560" y="80" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Z82ll9UgQxqg_cq3DmC--2" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;" edge="1" parent="1" source="iToEJ3CbW-RjeYXbpDTx-63" target="iToEJ3CbW-RjeYXbpDTx-48">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="370" y="560" as="sourcePoint" />
+            <mxPoint x="470" y="460" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
