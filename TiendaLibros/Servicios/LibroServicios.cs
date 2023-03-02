@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+
 using TiendaLibro.Dto.Request;
-using TiendaLibro.Dto.Response;
-using TiendaLibro.Mapeos.Resolvers;
+using TiendaLibro.Mapeos;
 using TiendaLibro.Repositorios;
 
 namespace TiendaLibro.Servicios
@@ -24,11 +24,12 @@ namespace TiendaLibro.Servicios
 
         public async Task<List<LibroDto>> Get()
         {
-            List<LibroDto> libroDtos = null;
+            
 
-            //var libro = await _repo.Get();
+            var libros = await _repo.Get();
+            var librosDto = LibrosMapeos.Map ( libros );
 
-            return libroDtos;
+            return librosDto;
         }
 
         public async Task<LibroDto?> GetByIsbn(string isbn)

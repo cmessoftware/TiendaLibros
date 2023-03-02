@@ -1,6 +1,4 @@
-using System.Xml;
 using TiendaLibro.Entidades;
-using TiendaLibro.Mapeos.Resolvers;
 using TiendaLibro.Repositorios;
 using TiendaLibro.Servicios;
 
@@ -21,7 +19,6 @@ builder.Services.AddScoped<ILibroServicios, LibroServicios>();
 builder.Services.AddScoped<ILibroRepositorio, LibroRepositorio>();
 
 //Mappers
-builder.Services.AddTransient<LibroDetallesResolver>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 

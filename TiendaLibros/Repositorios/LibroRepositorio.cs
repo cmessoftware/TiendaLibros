@@ -35,9 +35,10 @@ namespace TiendaLibro.Repositorios
             throw new NotImplementedException();
         }
 
-        public Task<List<Libro>> Get()
+        public async Task<List<Libro>> Get()
         {
-            throw new NotImplementedException();
+            var libros = await _context.Libros.ToListAsync();
+            return libros;
         }
     }
 }
