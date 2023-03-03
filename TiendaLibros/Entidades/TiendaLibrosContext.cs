@@ -31,7 +31,7 @@ public partial class TiendaLibrosContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-        => optionsBuilder.UseSqlServer( "Data Source = G580\\SQLEXPRESS; Initial Catalog = TiendaLibros - Clase; Trusted_Connection=True;" );
+        => optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = TiendaLibros-Clase; Trusted_Connection=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -62,9 +62,6 @@ public partial class TiendaLibrosContext : DbContext
         {
             entity.ToTable("Libro");
 
-            entity.Property(e => e.ISBN)
-                .HasMaxLength(16)
-                .IsUnicode(false);
             entity.Property(e => e.Autor)
                 .HasMaxLength(50)
                 .IsUnicode(false);

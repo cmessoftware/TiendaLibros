@@ -13,7 +13,6 @@ public partial class Libro
 
     public int? GeneroId { get; set; }
 
-    public string ISBN { get; internal set; }
     public virtual List<LibroDetalle> LibroDetalles { get; } = new List<LibroDetalle>();
  
 }

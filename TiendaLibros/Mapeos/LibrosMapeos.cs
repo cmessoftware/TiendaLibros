@@ -16,7 +16,6 @@ namespace TiendaLibro.Mapeos
                 {
                     Autor = item.Autor,
                     Genero =item.GeneroId.ToString(),
-                    Isbn=item.ISBN,
                     Titulo=item.Titulo
                 };
                 foreach (var librodetalle in item.LibroDetalles)
@@ -25,7 +24,9 @@ namespace TiendaLibro.Mapeos
                     {
                         Edicion = librodetalle.Edicion,
                         Editorial = librodetalle.Editorial,
-                        FechaPublicacion = librodetalle.FechaPublicacion
+                        FechaPublicacion = librodetalle.FechaPublicacion,
+                        ISBN = librodetalle.ISBN
+                       
                     };
                     aux.LibroDetalles.Add(lbdetdto);
 
@@ -33,6 +34,11 @@ namespace TiendaLibro.Mapeos
                 librosDto.Add ( aux );
             }
             return librosDto;
+        }
+
+        internal static LibroDto Map(Libro response)
+        {
+            throw new NotImplementedException();
         }
     }
 }

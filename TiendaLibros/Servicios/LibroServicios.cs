@@ -36,12 +36,9 @@ namespace TiendaLibro.Servicios
         {
             var response = await _repo.GetByIsbn(isbn);
 
-            var libro = _mapper.Map<LibroDto>(response);
-
-            //libro = LibroMapper.CompletarLibroDetalleMap(libro);
-
+            LibroDto libroDto = LibrosMapeos.Map(response);
          
-            return libro;
+            return libroDto;
         }
 
         public Task<LibroDto> GetByYear(int date)

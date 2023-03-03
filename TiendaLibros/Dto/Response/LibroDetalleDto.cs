@@ -13,7 +13,7 @@ public  class LibroDetalleDto
   
     public int? Edicion { get; set; }
 
-  
+    public string ISBN { get; set; }
     public virtual List<FormatoDto> Formatos { get; } = new List<FormatoDto>();
 
     public virtual List<MonedaDto> Monedas { get; } = new List<MonedaDto>();
