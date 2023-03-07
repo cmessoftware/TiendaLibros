@@ -31,7 +31,7 @@ public partial class TiendaLibrosContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-        => optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = TiendaLibros-Clase; Trusted_Connection=True;");
+        => optionsBuilder.UseSqlServer( "Server=G580\\SQLEXPRESS;Database=TiendaLibros-Clase;User Id=sa;Password=sa2008; Trusted_Connection=True ;TrustServerCertificate=True;" );
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
