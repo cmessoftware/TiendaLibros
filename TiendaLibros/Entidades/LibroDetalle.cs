@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TiendaLibro.Entidades;
+﻿namespace TiendaLibro.Entidades;
 
 public partial class LibroDetalle
 {
@@ -25,5 +22,5 @@ public partial class LibroDetalle
 
     public virtual Libro? Libro { get; set; }
 
-    public List<LibroDetalleFormato>? LibroDetalleFormatos { get; set; }
+    public List<LibroDetalleFormato> LibroDetalleFormatos { get; set; }
 }

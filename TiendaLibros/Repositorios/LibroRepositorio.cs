@@ -1,9 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.SqlServer.Server;
-using System;
-using System.ComponentModel;
-using System.Security.Cryptography;
 using TiendaLibro.Entidades;
 
 namespace TiendaLibro.Repositorios
@@ -23,22 +19,16 @@ namespace TiendaLibro.Repositorios
             _context = context;
         }
 
-        public async Task<Libro?> GetByIsbn(string isbn)
+        public async Task<Libro>? GetByIsbn(string isbn)
         {
-            var libro = await (from l in _context.Set<Libro>()
-                               join ld in _context.Set<LibroDetalle>()
-                               on l.Id equals ld.LibroId
-                               join ldf in _context.Set<LibroDetalleFormato>()
-                               on ld.Id equals ldf.LibroDetalleId
-                               join f in _context.Set<Formato>()
-                               on ldf.Id equals f.LibroDetalleFormatoId
-                               join m in _context.Set<Moneda>()
-                               on ldf.Id equals m.LibroDetalleFormatoId
-                               where ld.ISBN == isbn
-                               select l)
+
+            var libro = await _context.Libros
                                .Include(x => x.LibroDetalles)
-                               .FirstOrDefaultAsync();
-                        
+                                    .ThenInclude(x => x.LibroDetalleFormatos)
+                                        .ThenInclude(x => x.Monedas)
+                               .Include(x => x.Genero)
+                               .FirstOrDefaultAsync(x => x.ISBN == isbn);
+
             return libro;
         }
 
@@ -50,7 +40,15 @@ namespace TiendaLibro.Repositorios
 
         public async Task<List<Libro>> Get()
         {
-            var libros = await _context.Libros.ToListAsync();
+            
+            var libros = await _context.Libros
+                               .Include(x => x.LibroDetalles)
+                                    .ThenInclude(x => x.LibroDetalleFormatos)
+                                        .ThenInclude(x => x.Monedas)
+                               .Include(x => x.Genero)
+                               .ToListAsync();
+
+
             return libros;
         }
     }

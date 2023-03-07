@@ -62,6 +62,9 @@ public partial class TiendaLibrosContext : DbContext
         {
             entity.ToTable("Libro");
 
+            entity.Property(e => e.ISBN)
+               .HasMaxLength(16)
+               .IsUnicode(false);
             entity.Property(e => e.Autor)
                 .HasMaxLength(50)
                 .IsUnicode(false);

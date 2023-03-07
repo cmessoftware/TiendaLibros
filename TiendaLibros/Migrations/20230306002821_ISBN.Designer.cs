@@ -12,8 +12,8 @@ using TiendaLibro.Entidades;
 namespace TiendaLibro.Migrations
 {
     [DbContext(typeof(TiendaLibrosContext))]
-    [Migration("20230301180712_NewFieldISBN")]
-    partial class NewFieldISBN
+    [Migration("20230306002821_ISBN")]
+    partial class ISBN
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,6 +96,8 @@ namespace TiendaLibro.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GeneroId");
+
                     b.ToTable("Libro", (string)null);
                 });
 
@@ -119,7 +121,7 @@ namespace TiendaLibro.Migrations
                     b.Property<DateTime?>("FechaPublicacion")
                         .HasColumnType("date");
 
-                    b.Property<string>("Isbn")
+                    b.Property<string>("ISBN")
                         .IsRequired()
                         .HasMaxLength(20)
                         .IsUnicode(false)
@@ -166,6 +168,8 @@ namespace TiendaLibro.Migrations
                         .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LibroDetalleId");
 
                     b.ToTable("LibroDetalleFormato", (string)null);
                 });
@@ -215,6 +219,15 @@ namespace TiendaLibro.Migrations
                     b.Navigation("LibroDetalleFormato");
                 });
 
+            modelBuilder.Entity("TiendaLibro.Entidades.Libro", b =>
+                {
+                    b.HasOne("TiendaLibro.Entidades.Genero", "Genero")
+                        .WithMany()
+                        .HasForeignKey("GeneroId");
+
+                    b.Navigation("Genero");
+                });
+
             modelBuilder.Entity("TiendaLibro.Entidades.LibroDetalle", b =>
                 {
                     b.HasOne("TiendaLibro.Entidades.Libro", "Libro")
@@ -225,10 +238,19 @@ namespace TiendaLibro.Migrations
                     b.Navigation("Libro");
                 });
 
+            modelBuilder.Entity("TiendaLibro.Entidades.LibroDetalleFormato", b =>
+                {
+                    b.HasOne("TiendaLibro.Entidades.LibroDetalle", null)
+                        .WithMany("LibroDetalleFormatos")
+                        .HasForeignKey("LibroDetalleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("TiendaLibro.Entidades.Moneda", b =>
                 {
                     b.HasOne("TiendaLibro.Entidades.LibroDetalleFormato", "LibroDetalleFormato")
-                        .WithMany("Moneda")
+                        .WithMany("Monedas")
                         .HasForeignKey("LibroDetalleFormatoId")
                         .HasConstraintName("FK_Moneda_LibroDetalleFormato");
 
@@ -240,11 +262,16 @@ namespace TiendaLibro.Migrations
                     b.Navigation("LibroDetalles");
                 });
 
+            modelBuilder.Entity("TiendaLibro.Entidades.LibroDetalle", b =>
+                {
+                    b.Navigation("LibroDetalleFormatos");
+                });
+
             modelBuilder.Entity("TiendaLibro.Entidades.LibroDetalleFormato", b =>
                 {
                     b.Navigation("Formatos");
 
-                    b.Navigation("Moneda");
+                    b.Navigation("Monedas");
                 });
 #pragma warning restore 612, 618
         }
