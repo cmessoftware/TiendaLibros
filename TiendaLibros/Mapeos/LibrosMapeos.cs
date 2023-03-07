@@ -15,30 +15,38 @@ namespace TiendaLibro.Mapeos
                 LibroDto aux = new LibroDto ()
                 {
                     Autor = item.Autor,
-                    Genero =item.GeneroId.ToString(),
-                    Titulo=item.Titulo
+                    Genero = item.GeneroId.ToString (),
+                    Titulo = item.Titulo
                 };
-                foreach (var librodetalle in item.LibroDetalles)
-                {
-                    LibroDetalleDto lbdetdto = new LibroDetalleDto ()
-                    {
-                        Edicion = librodetalle.Edicion,
-                        Editorial = librodetalle.Editorial,
-                        FechaPublicacion = librodetalle.FechaPublicacion,
-                        ISBN = librodetalle.ISBN
-                       
-                    };
-                    aux.LibroDetalles.Add(lbdetdto);
+                //foreach (var librodetalle in item.LibroDetalles)
+                //{
+                //    LibroDetalleDto lbdetdto = new LibroDetalleDto ()
+                //    {
+                //        Edicion = librodetalle.Edicion,
+                //        Editorial = librodetalle.Editorial,
+                //        FechaPublicacion = librodetalle.FechaPublicacion,
+                //        ISBN = librodetalle.ISBN
+                        
 
-                }
+                //    };
+                //    aux.LibroDetalles.Add ( lbdetdto );
+
+                //}
                 librosDto.Add ( aux );
             }
             return librosDto;
         }
 
-        internal static LibroDto Map(Libro response)
+        internal static LibroDto Map ( Libro response )
         {
-            throw new NotImplementedException();
+            LibroDto libro = new LibroDto ()
+            {
+                Autor = response.Autor,
+                Genero = response.GeneroId.ToString (),
+                Titulo = response.Titulo
+
+            };
+            return libro;
         }
     }
 }

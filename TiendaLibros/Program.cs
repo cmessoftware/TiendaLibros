@@ -17,6 +17,7 @@ builder.Services.AddLogging();
 builder.Services.AddDbContext<TiendaLibrosContext>();
 builder.Services.AddScoped<ILibroServicios, LibroServicios>();
 builder.Services.AddScoped<ILibroRepositorio, LibroRepositorio>();
+
 //builder.Services.AddConfig
 
 //Mappers

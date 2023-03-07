@@ -34,18 +34,27 @@ namespace TiendaLibro.Controllers
 
         [HttpGet]
         [Route("{date:int}")]
-        public async Task<ActionResult<LibroResponseDto>> GetByYear(int date)
+        public async Task<ActionResult<List<LibroResponseDto>>> GetByYear(int date)
         {
-            LibroDto libro = await _servicio.GetByYear(date);
+            var libros = await _servicio.GetByYear(date);
 
-            return Ok(libro);
+            return Ok(libros);
+        }
+
+        [HttpGet]
+        [Route ( "libroPorFecha/{date:int}" )]
+        public async Task<ActionResult<LibroResponseDto>> GetLibroByYear ( int date )
+        {
+            LibroDto libro = await _servicio.GetLibroByYear ( date );
+
+            return Ok ( libro );
         }
 
         [HttpPost]
         [Route("{consulta}")]
         public async Task<ActionResult<LibroResponseDto>> Get(int date)
         {
-            LibroDto libro = await _servicio.GetByYear(date);
+            LibroDto libro = await _servicio.GetLibroByYear(date);
 
             return Ok(libro);
         }

@@ -7,7 +7,8 @@ namespace TiendaLibro.Servicios
         public Task<List<LibroDto>> Get();
 
         public Task<LibroDto> GetByIsbn(string isbn);
-        public Task<LibroDto> GetByYear(int date);
+        public Task<List<LibroDto>> GetByYear(int date);
         public Task<LibroDto> GetLibro(LibroRequestDto libro);
+        public Task<LibroDto> GetLibroByYear ( int date );
     }
 }

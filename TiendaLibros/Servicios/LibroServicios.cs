@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 
+using System.Runtime.CompilerServices;
+
 using TiendaLibro.Dto.Request;
+using TiendaLibro.Entidades;
 using TiendaLibro.Mapeos;
 using TiendaLibro.Repositorios;
 
@@ -24,9 +27,8 @@ namespace TiendaLibro.Servicios
 
         public async Task<List<LibroDto>> Get()
         {
-            
-
             var libros = await _repo.Get();
+
             var librosDto = LibrosMapeos.Map ( libros );
 
             return librosDto;
@@ -34,22 +36,36 @@ namespace TiendaLibro.Servicios
 
         public async Task<LibroDto?> GetByIsbn(string isbn)
         {
-            var response = await _repo.GetByIsbn(isbn);
+            Libro response = await _repo.GetByIsbn(isbn);
 
             LibroDto libroDto = LibrosMapeos.Map(response);
          
             return libroDto;
         }
 
-        public Task<LibroDto> GetByYear(int date)
+        public async Task<List<LibroDto>> GetByYear(int date)
         {
-            throw new NotImplementedException();
+            var response = await _repo.GetByDate ( date );
+
+            List<LibroDto> librosDto = LibrosMapeos.Map ( response );
+
+            return librosDto;
+        }
+
+        public async Task<LibroDto> GetLibroByYear ( int date )
+        {
+            Libro response = await _repo.GetLibroByDate ( date );
+
+            LibroDto libroDto = LibrosMapeos.Map ( response );
+
+            return libroDto;
         }
 
         public async Task<LibroDto> GetLibro(LibroRequestDto libro)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
+        
     }
 }
