@@ -51,5 +51,16 @@ namespace TiendaLibro.Servicios
             throw new NotImplementedException();
         }
 
+        public Task<LibroDto> GetLibroByYear(int date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task SaveLibro(LibroDto libro)
+        {
+            var libroDB = LibrosMapeos.Map(libro);
+
+            await _repo.SaveLibro(libroDB);
+        }
     }
 }

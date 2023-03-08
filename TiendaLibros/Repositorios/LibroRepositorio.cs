@@ -51,5 +51,14 @@ namespace TiendaLibro.Repositorios
 
             return libros;
         }
+
+        public async Task SaveLibro(Libro libroDB)
+        {
+            //Agrego el cambio. 
+            await _context.AddAsync(libroDB);
+
+            //Ejecuto el cambio.
+            await _context.SaveChangesAsync();
+        }
     }
 }

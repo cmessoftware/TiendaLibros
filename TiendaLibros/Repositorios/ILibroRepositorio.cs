@@ -9,5 +9,6 @@ namespace TiendaLibro.Repositorios
         public Task<Libro> GetByIsbn(string isbn);
 
         public Task<List<Libro>> GetLibro(Libro libro);
+        Task SaveLibro(Libro libroDB);
     }
 }

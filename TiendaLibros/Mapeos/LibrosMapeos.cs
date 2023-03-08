@@ -108,5 +108,10 @@ namespace TiendaLibro.Mapeos
          
             return libro;
         }
+
+        internal static Libro Map(LibroDto libro)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
