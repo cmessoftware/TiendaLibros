@@ -4,13 +4,7 @@ namespace TiendaLibro.Entidades;
 
 public partial class TiendaLibrosContext : DbContext
 {
-    //private readonly IConfiguration _configuration;
-
-    public TiendaLibrosContext()
-    {
-        
-        //_configuration = configuration;
-    }
+    private readonly IConfiguration _configuration;
 
     public TiendaLibrosContext(DbContextOptions<TiendaLibrosContext> options)
         : base(options)
@@ -25,13 +19,10 @@ public partial class TiendaLibrosContext : DbContext
 
     public virtual DbSet<LibroDetalle> LibroDetalles { get; set; }
 
-    public virtual DbSet<LibroDetalleFormato> LibroDetalleFormatos { get; set; }
-
     public virtual DbSet<Moneda> Moneda { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
-        => optionsBuilder.UseSqlServer( "Server=G580\\SQLEXPRESS;Database=TiendaLibros-Clase;User Id=sa;Password=sa2008; Trusted_Connection=True ;TrustServerCertificate=True;" );
+        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLlocaldb;Initial Catalog=TiendaLibros-Clase");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -40,13 +31,14 @@ public partial class TiendaLibrosContext : DbContext
             entity.ToTable("Formato");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.CodigoMoneda)
+                .HasMaxLength(3);
+            entity.Property(e => e.Precio)
+                .HasPrecision(18, 2);
             entity.Property(e => e.Nombre)
                 .HasMaxLength(20)
                 .IsUnicode(false);
-
-            entity.HasOne(d => d.LibroDetalleFormato).WithMany(p => p.Formatos)
-                .HasForeignKey(d => d.LibroDetalleFormatoId)
-                .HasConstraintName("FK_Formato_LibroDetalleFormato");
+            entity.Property(e => e.LibroDetalleId);
         });
 
         modelBuilder.Entity<Genero>(entity =>
@@ -62,32 +54,15 @@ public partial class TiendaLibrosContext : DbContext
         {
             entity.ToTable("Libro");
 
-            entity.Property(e => e.ISBN)
-               .HasMaxLength(16)
-               .IsUnicode(false);
             entity.Property(e => e.Autor)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Titulo)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-        });
-
-        modelBuilder.Entity<LibroDetalle>(entity =>
-        {
-            entity.ToTable("LibroDetalle");
-
-            entity.Property(e => e.Editorial)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.FechaPublicacion).HasColumnType("date");
-            entity.Property(e => e.ISBN)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("ISBN");
             entity.Property(e => e.PortadaLink)
-                .HasMaxLength(256)
-                .IsUnicode(false);
+                 .HasMaxLength(256)
+                 .IsUnicode(false);
             entity.Property(e => e.Resumen)
                 .HasMaxLength(2000)
                 .IsUnicode(false);
@@ -95,16 +70,20 @@ public partial class TiendaLibrosContext : DbContext
                 .HasMaxLength(256)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Libro).WithMany(p => p.LibroDetalles)
-                .HasForeignKey(d => d.LibroId)
-                .HasConstraintName("FK_LibroDetalle_Libro");
         });
 
-        modelBuilder.Entity<LibroDetalleFormato>(entity =>
+        modelBuilder.Entity<LibroDetalle>(entity =>
         {
-            entity.ToTable("LibroDetalleFormato");
+            entity.ToTable("LibroDetalle");
 
-            entity.Property(e => e.Precio).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.ISBN)
+                  .HasMaxLength(16)
+                  .IsUnicode(false);
+            entity.Property(e => e.Editorial)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FechaPublicacion).HasColumnType("date");
+         
         });
 
         modelBuilder.Entity<Moneda>(entity =>
@@ -119,9 +98,6 @@ public partial class TiendaLibrosContext : DbContext
                 .HasMaxLength(3)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.LibroDetalleFormato).WithMany(p => p.Monedas)
-                .HasForeignKey(d => d.LibroDetalleFormatoId)
-                .HasConstraintName("FK_Moneda_LibroDetalleFormato");
         });
 
         OnModelCreatingPartial(modelBuilder);

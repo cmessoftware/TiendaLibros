@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 
 using TiendaLibro.Dto.Request;
+using TiendaLibro.Entidades;
 using TiendaLibro.Mapeos;
 using TiendaLibro.Repositorios;
 
@@ -36,7 +37,7 @@ namespace TiendaLibro.Servicios
         {
             var response = await _repo.GetByIsbn(isbn);
 
-            LibroDto libroDto = LibrosMapeos.Map(response);
+            LibroDto libroDto = _mapper.Map<LibroDto>(response);
          
             return libroDto;
         }
@@ -48,7 +49,13 @@ namespace TiendaLibro.Servicios
 
         public async Task<LibroDto> GetLibro(LibroRequestDto libro)
         {
-            throw new NotImplementedException();
+            LibroDto libroDto = new LibroDto();
+
+            //var libro = _
+
+
+            return libroDto;
+
         }
 
         public Task<LibroDto> GetLibroByYear(int date)
@@ -58,7 +65,7 @@ namespace TiendaLibro.Servicios
 
         public async Task SaveLibro(LibroDto libro)
         {
-            var libroDB = LibrosMapeos.Map(libro);
+            var libroDB = _mapper.Map<Libro>(libro);
 
             await _repo.SaveLibro(libroDB);
         }
