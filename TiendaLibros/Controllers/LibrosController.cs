@@ -5,7 +5,7 @@ using TiendaLibro.Servicios;
 
 namespace TiendaLibro.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class LibrosController : Controller
     {
@@ -26,7 +26,7 @@ namespace TiendaLibro.Controllers
         }
 
         [HttpGet]
-        [Route("{isbn}")]
+        [Route("isbn/{isbn}")]
         public async Task<ActionResult<LibroResponseDto>> GetById(string isbn)
         {
             LibroDto libro = await _servicio.GetByIsbn(isbn);
@@ -36,15 +36,17 @@ namespace TiendaLibro.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> SaveLibro([FromBody] LibroDto libro)
+        public async Task<ActionResult> SaveLibro([FromBody] LibroRequestDto libro)
         {
-            await _servicio.SaveLibro(libro);
+            await _servicio.SaveLibro(libro.Libro);
 
             return Ok();
         }
 
+
+      
         [HttpGet]
-        [Route("{date:int}")]
+        [Route("date/{date:int}")]
         public async Task<ActionResult<List<LibroResponseDto>>> GetByYear(int date)
         {
             var libros = await _servicio.GetByYear(date);

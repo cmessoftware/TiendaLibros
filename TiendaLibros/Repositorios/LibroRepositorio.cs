@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Net.WebSockets;
 using TiendaLibro.Entidades;
 
 namespace TiendaLibro.Repositorios
@@ -22,12 +24,10 @@ namespace TiendaLibro.Repositorios
         public async Task<Libro>? GetByIsbn(string isbn)
         {
 
-            var libro = await _context.Libros
-                               .Include(x => x.LibroDetalles)
-                                    .ThenInclude(x => x.LibroDetalleFormatos)
-                                        .ThenInclude(x => x.Monedas)
-                               .Include(x => x.Genero)
-                               .FirstOrDefaultAsync(x => x.ISBN == isbn);
+            var libro = _context.Libros.Include(l => l.LibroDetalles)
+                        .ThenInclude(ld => ld.Formatos)
+                        .Include(l => l.Genero)
+                        .SingleOrDefault(l => l.LibroDetalles.Any(ld => ld.ISBN == isbn));
 
             return libro;
         }
@@ -40,13 +40,14 @@ namespace TiendaLibro.Repositorios
 
         public async Task<List<Libro>> Get()
         {
-            
-            var libros = await _context.Libros
-                               .Include(x => x.LibroDetalles)
-                                    .ThenInclude(x => x.LibroDetalleFormatos)
-                                        .ThenInclude(x => x.Monedas)
-                               .Include(x => x.Genero)
-                               .ToListAsync();
+            List<Libro> libros = new List<Libro>();
+
+            //var libros = await _context.Libros
+            //                   .Include(x => x.LibroDetalles)
+            //                        .ThenInclude(x => x.LibroDetalleFormatos)
+            //                            .ThenInclude(x => x.Monedas)
+            //                   .Include(x => x.Genero)
+            //                   .ToListAsync();
 
 
             return libros;
@@ -56,7 +57,6 @@ namespace TiendaLibro.Repositorios
         {
             //Agrego el cambio. 
             await _context.AddAsync(libroDB);
-
             //Ejecuto el cambio.
             await _context.SaveChangesAsync();
         }

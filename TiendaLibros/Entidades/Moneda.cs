@@ -12,8 +12,5 @@ public partial class Moneda
     public string Simbolo { get; set; } = null!;
 
     public string? Descripcion { get; set; }
-
-    public int? LibroDetalleFormatoId { get; set; }
-
-    public virtual LibroDetalleFormato? LibroDetalleFormato { get; set; }
+ 
 }

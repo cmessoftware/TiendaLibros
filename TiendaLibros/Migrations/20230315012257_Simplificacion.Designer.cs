@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TiendaLibro.Entidades;
 
@@ -11,9 +12,11 @@ using TiendaLibro.Entidades;
 namespace TiendaLibro.Migrations
 {
     [DbContext(typeof(TiendaLibrosContext))]
-    partial class TiendaLibrosContextModelSnapshot : ModelSnapshot
+    [Migration("20230315012257_Simplificacion")]
+    partial class Simplificacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,10 +32,9 @@ namespace TiendaLibro.Migrations
 
                     b.Property<string>("CodigoMoneda")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LibroDetalleId")
+                    b.Property<int?>("LibroDetalleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
@@ -42,7 +44,6 @@ namespace TiendaLibro.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<decimal>("Precio")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -101,6 +102,7 @@ namespace TiendaLibro.Migrations
                         .HasColumnType("varchar(2000)");
 
                     b.Property<string>("ResumenLink")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .IsUnicode(false)
                         .HasColumnType("varchar(256)");
@@ -191,13 +193,9 @@ namespace TiendaLibro.Migrations
 
             modelBuilder.Entity("TiendaLibro.Entidades.Formato", b =>
                 {
-                    b.HasOne("TiendaLibro.Entidades.LibroDetalle", "LibroDetalle")
+                    b.HasOne("TiendaLibro.Entidades.LibroDetalle", null)
                         .WithMany("Formatos")
-                        .HasForeignKey("LibroDetalleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("LibroDetalle");
+                        .HasForeignKey("LibroDetalleId");
                 });
 
             modelBuilder.Entity("TiendaLibro.Entidades.Libro", b =>

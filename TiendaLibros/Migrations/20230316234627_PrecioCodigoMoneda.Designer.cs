@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TiendaLibro.Entidades;
 
@@ -11,9 +12,11 @@ using TiendaLibro.Entidades;
 namespace TiendaLibro.Migrations
 {
     [DbContext(typeof(TiendaLibrosContext))]
-    partial class TiendaLibrosContextModelSnapshot : ModelSnapshot
+    [Migration("20230316234627_PrecioCodigoMoneda")]
+    partial class PrecioCodigoMoneda
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

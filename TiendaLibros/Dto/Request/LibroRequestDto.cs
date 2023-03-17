@@ -4,6 +4,6 @@ namespace TiendaLibro.Dto.Request
 {
     public class LibroRequestDto
     {
-        public List<LibroDto> Libros { get; set; }
+        public LibroDto Libro { get; set; }
     }
 }

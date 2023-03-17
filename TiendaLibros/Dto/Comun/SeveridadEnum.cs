@@ -2,8 +2,8 @@
 {
     public enum SeveridadEnum
     {
-        NONE = 0,
-        WARNING = 1, 
-        ERROR = 2,
+        INFO = 1,
+        WARNING = 2, 
+        ERROR = 3,
     }
 }

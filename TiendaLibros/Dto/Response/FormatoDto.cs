@@ -5,12 +5,12 @@ namespace TiendaLibro.Dto.Response;
 
 public class FormatoDto
 {
-     public string Nombre { get; set; } = null!;
+    public string Nombre { get; set; } = null!;
 
-    public decimal Precio
-    {
-        set => decimal.Round(value, 2);
-        get => Precio;
-    }
+    public string CodigoMoneda { get; set; }
+
+    public decimal Precio { get; set; }
+
+    public List<MonedaDto> Moneda { get; set; }
 
 }
