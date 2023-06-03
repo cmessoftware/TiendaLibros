@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TiendaLibro.Dto.Request;
-using TiendaLibro.Dto.Response;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using TiendaLibro.Dto;
 using TiendaLibro.Servicios;
 
 namespace TiendaLibro.Controllers
@@ -9,67 +10,79 @@ namespace TiendaLibro.Controllers
     [ApiController]
     public class LibrosController : Controller
     {
-        private readonly ILibroServicios _servicio;
+        private readonly ILibroServicio _servicio;
+        private readonly IMapper _mapper;
 
-        public LibrosController(ILibroServicios servicio)
+        public LibrosController(ILibroServicio servicio,
+                                IMapper mapper)
         {
             _servicio = servicio;
+            this._mapper = mapper;
         }
 
         [HttpGet]
         [Route("/")]
-        public async Task<ActionResult<LibroResponseDto>> Get()
+        public async Task<JsonResult> GetAll()
         {
-            List<LibroDto> libro = await _servicio.Get();
+            try
+            {
+                var libro = await _servicio.GetAll();
 
-            return Ok(libro);
+                var libroDto = _mapper.Map<LibroDto>(libro);
+
+                return Json(
+                        new
+                        {
+                            titulo = libroDto.Titulo,
+                            autor = libroDto.Autor,
+                            isbn = libroDto.ISBN,
+                            estado = HttpStatusCode.OK
+                        }
+                    );
+            }
+            catch (Exception ex)
+            {
+                return Json(
+                        new
+                        {
+                            errors = new { ex.Message },
+                            estado = HttpStatusCode.InternalServerError
+                        }
+                    );
+            }
         }
 
         [HttpGet]
-        [Route("isbn/{isbn}")]
-        public async Task<ActionResult<LibroResponseDto>> GetById(string isbn)
+        [Route("{id?}")]
+        public async Task<JsonResult> GetById(int? id)
         {
-            LibroDto libro = await _servicio.GetByIsbn(isbn);
+            try
+            {
+                var libro = await _servicio.GetAll();
 
-            return Ok(libro);
+                var libroDto = _mapper.Map<LibroDto>(libro);
+
+                return Json(
+                        new
+                        {
+                            titulo = libroDto.Titulo,
+                            autor = libroDto.Autor,
+                            isbn = libroDto.ISBN,
+                            estado = HttpStatusCode.OK
+                        }
+                    );
+            }
+            catch (Exception ex)
+            {
+                return Json(
+                        new
+                        {
+                            errors = new { ex.Message },
+                            estado = HttpStatusCode.InternalServerError
+                        }
+                    );
+            }
         }
 
-
-        [HttpPost]
-        public async Task<ActionResult> SaveLibro([FromBody] LibroRequestDto libro)
-        {
-            await _servicio.SaveLibro(libro.Libro);
-
-            return Ok();
-        }
-
-
-      
-        [HttpGet]
-        [Route("date/{date:int}")]
-        public async Task<ActionResult<List<LibroResponseDto>>> GetByYear(int date)
-        {
-            var libros = await _servicio.GetByYear(date);
-
-            return Ok(libros);
-        }
-
-        [HttpGet]
-        [Route ( "libroPorFecha/{date:int}" )]
-        public async Task<ActionResult<LibroResponseDto>> GetLibroByYear ( int date )
-        {
-            LibroDto libro = await _servicio.GetLibroByYear ( date );
-
-            return Ok ( libro );
-        }
-
-        [HttpGet]
-        [Route("{consulta}")]
-        public async Task<ActionResult<LibroResponseDto>> Get(int date)
-        {
-            LibroDto libro = await _servicio.GetLibroByYear(date);
-
-            return Ok(libro);
-        }
     }
 }

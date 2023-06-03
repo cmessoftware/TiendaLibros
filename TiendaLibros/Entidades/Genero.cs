@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace TiendaLibro.Entidades;
 
-namespace TiendaLibro.Entidades;
-
-public partial class Genero
+public class Genero
 {
     public int Id { get; set; }
 
     public string Nombre { get; set; }
+
+    public List<Libro> Libros { get; set; }
 }

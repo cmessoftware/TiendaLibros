@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
+using TiendaLibro.Common.Extensiones;
 using TiendaLibro.Entidades;
-using TiendaLibro.Repositorios;
-using TiendaLibro.Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+//Configuracion del EF Core.
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 
@@ -16,16 +17,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddLogging();
 
 //Configuro el DBContext y el connection string.
-builder.Services.AddDbContext<TiendaLibrosContext>(options => 
-        options.UseSqlServer("Data Source=(localdb)\\MSSQLServer;Initial Catalog=TiendaLibros-Clase")
+builder.Services.AddDbContext<TiendaLibrosContext>(options =>
+        options.UseSqlServer(connectionString)
 );
 
 //Configuro servicio agregados por DI.
-
-builder.Services.AddScoped<ILibroServicios, LibroServicios>();
-builder.Services.AddScoped<ILibroRepositorio, LibroRepositorio>();
 //builder.Services.AddConfig
-
+//Usa una método de extensión de IServiceCollection.
+builder.Services.AddServices();
 //Mappers
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -1,7 +1,6 @@
 ﻿
 using AutoMapper;
-using TiendaLibro.Dto.Request;
-using TiendaLibro.Dto.Response;
+using TiendaLibro.Dto;
 using TiendaLibro.Entidades;
 
 namespace TiendaLibro.Mapeos
@@ -14,7 +13,6 @@ namespace TiendaLibro.Mapeos
             CreateMap<GeneroDto, Genero>();
             CreateMap<LibroDetalleDto, LibroDetalle>();
             CreateMap<FormatoDto, Formato>();
-            CreateMap<MonedaDto, Moneda>();
         }
     }
 }
